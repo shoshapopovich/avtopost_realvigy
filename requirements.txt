@@ -40,7 +40,7 @@ vbml==1.1.post1
 vk==2.0.2
 vk-api==11.9.7
 vkapi==1.1
-vkbottle==4.2.2
+vkbottle @ https://github.com/timoniq/vkbottle/archive/master.zip
 vkbottle-types==5.131.146.1
 watchgod==0.7
 win32-setctime==1.1.0
