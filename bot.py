@@ -103,7 +103,7 @@ async def privet(message: Message):
 message = '    здарова шелуха 😎 \nНапиши "команды" чтоб узнать что я могу'
 )
 
-@vk.on.private_message(text=['команды'])
+@vk.on.private_message(text=['команды','Команды','комы','rjvfyls','Rjvfyls','Комы'])
 @vk.on.private_message(payload={'cmd': 'komandi'})
 # Сама функция:
 async def privet(message: Message):
@@ -242,6 +242,8 @@ async def menu(message: Message):
         	# PRIMARY - СИНИЙ, NEGATIVE - КРАСНЫЙ
 
             Keyboard(one_time = False, inline = False)
+	    .add(Text('хентай'), color=KeyboardButtonColor.POSITIVE)
+            .row()
             .add(Text('ЕБЛААААН'), color=KeyboardButtonColor.POSITIVE)
             .add(Text('анекдот'), color=KeyboardButtonColor.POSITIVE)
             .row()
