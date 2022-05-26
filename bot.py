@@ -392,8 +392,8 @@ async def blasthk(message: Message):
 
 @vk.on.private_message()
 async def main(message):
-    await message.answer('че, не понял :/ \nнапиши "команды" ёпта  ')
-
+    await message.answer('')
+#че, не понял :/ \nнапиши "команды" ёпта  
 
 # Толик видиорегистратор система мене
 vk.run_forever()
