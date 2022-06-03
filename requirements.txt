@@ -41,7 +41,7 @@ vk==2.0.2
 vk-api==11.9.7
 vkapi==1.1
 vkbottle @ https://github.com/timoniq/vkbottle/archive/master.zip
-vkbottle-types==5.131.146.1
+vkbottle-types==5.131.146.3
 watchgod==0.7
 win32-setctime==1.1.0
 yarl==1.7.2
