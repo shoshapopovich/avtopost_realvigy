@@ -2022,8 +2022,8 @@ async def with_puree(message: types.Message):
     yved1 = photo_nom
 
     keyboard = types.InlineKeyboardMarkup(row_width=2)
-    keyboard.add(types.InlineKeyboardButton(text="Спасибо", callback_data="spasibo"), types.InlineKeyboardButton(text="Отмена", callback_data="delet"))
-    await bot.send_message(message.from_user.id, 'Постов отправлено: {}'.format(yved1),  reply_markup=keyboard)
+    keyboard.add( types.InlineKeyboardButton(text="Очистка", callback_data="delet"))
+    await bot.send_message(message.from_user.id, 'Готово',  reply_markup=keyboard)
 
     
 
