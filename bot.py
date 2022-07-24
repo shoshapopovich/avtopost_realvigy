@@ -34,9 +34,10 @@ async def handle_message_event(event: GroupTypes.WallReplyNew):
     post_id=event.object.id
     post_text=event.object.text
     post_istok=event.object.copyright
-    print(post_istok)
+    post_donut=event.object.donut.is_donut
+    print(post_istok, post_donut)
 
-    if post_istok == None:
+    if post_istok == None and if post_donut == False:
         try: 
             try: 
                 s1 = event.object. attachments[0].photo.sizes[1].height
