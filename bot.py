@@ -35,103 +35,106 @@ async def handle_message_event(event: GroupTypes.WallReplyNew):
     post_text=event.object.text
     post_istok=event.object.copyright
     post_donut=event.object.donut.is_donut
+    post_tip = event.object.post_type
     print(post_istok, post_donut)
 
-    
     if post_istok == None:
         if post_donut == False:
-            try: 
-                try: 
-                    s1 = event.object. attachments[0].photo.sizes[1].height
-                except:
-                    print('такого размера нет')   
-                    s1 = 0 
+            if post_tip != 'suggest':
+                if post_tip != 'copy':
+                    if post_tip != 'reply':                
+                        try: 
+                            try: 
+                                s1 = event.object. attachments[0].photo.sizes[1].height
+                            except:
+                                print('такого размера нет')   
+                                s1 = 0 
 
-                try: 
-                    s2 = event.object.attachments[0].photo.sizes[2].height
-                except:
-                    print('такого размера нет')    
-                    s2 = 0
-                try: 
-                    s3 = event.object.attachments[0].photo.sizes[3].height
-                except:
-                    print('такого размера нет')    
-                    s3 = 0
-                try: 
-                    s4 = event.object.attachments[0].photo.sizes[4].height
-                except:
-                    print('такого размера нет')    
-                    s4 = 0        
-                try: 
-                    s5 = event.object.attachments[0].photo.sizes[5].height
-                except:
-                    print('такого размера нет')    
-                    s5 = 0
-                try: 
-                    s6 = event.object.attachments[0].photo.sizes[6].height
-                except:
-                    print('такого размера нет') 
-                    s6 = 0           
-                try: 
-                    s7 = event.object.attachments[0].photo.sizes[7].height
-                except:
-                    print('такого размера нет')    
-                    s7 = 0
-                sizes = {"1":s1, "2":s2, "3":s3, "4":s4, "5":s5, "6":s6, "7":s7}
+                            try: 
+                                s2 = event.object.attachments[0].photo.sizes[2].height
+                            except:
+                                print('такого размера нет')    
+                                s2 = 0
+                            try: 
+                                s3 = event.object.attachments[0].photo.sizes[3].height
+                            except:
+                                print('такого размера нет')    
+                                s3 = 0
+                            try: 
+                                s4 = event.object.attachments[0].photo.sizes[4].height
+                            except:
+                                print('такого размера нет')    
+                                s4 = 0        
+                            try: 
+                                s5 = event.object.attachments[0].photo.sizes[5].height
+                            except:
+                                print('такого размера нет')    
+                                s5 = 0
+                            try: 
+                                s6 = event.object.attachments[0].photo.sizes[6].height
+                            except:
+                                print('такого размера нет') 
+                                s6 = 0           
+                            try: 
+                                s7 = event.object.attachments[0].photo.sizes[7].height
+                            except:
+                                print('такого размера нет')    
+                                s7 = 0
+                            sizes = {"1":s1, "2":s2, "3":s3, "4":s4, "5":s5, "6":s6, "7":s7}
 
-                good_size=max(sizes, key=sizes.get)
-                print(good_size)
+                            good_size=max(sizes, key=sizes.get)
+                            print(good_size)
 
-                if good_size == '1':
-                    photo=event.object.attachments[0].photo.sizes[1].url
-                else: 
-                    print('не то1')
-                if good_size == '2':
-                    photo=event.object.attachments[0].photo.sizes[2].url
-                else: 
-                    print('не то2')
-             
-                if good_size == '3':
-                    photo=event.object.attachments[0].photo.sizes[3].url
-                else: 
-                    print('не то3')
-             
-                if good_size == '4':
-                    photo=event.object.attachments[0].photo.sizes[4].url
-                else: 
-                    print('не то4')
-             
-                if good_size == '5':
-                    photo=event.object.attachments[0].photo.sizes[5].url
-                else: 
-                    print('не то5')
-             
-                if good_size == '6':
-                    photo=event.object.attachments[0].photo.sizes[6].url
-                else: 
-                    print('не то6')
-             
-                if good_size == '7':
-                    photo=event.object.attachments[0].photo.sizes[7].url
-                else: 
-                    print('не то7')
-             
+                            if good_size == '1':
+                                photo=event.object.attachments[0].photo.sizes[1].url
+                            else: 
+                                print('не то1')
+                            if good_size == '2':
+                                photo=event.object.attachments[0].photo.sizes[2].url
+                            else: 
+                                print('не то2')
+                         
+                            if good_size == '3':
+                                photo=event.object.attachments[0].photo.sizes[3].url
+                            else: 
+                                print('не то3')
+                         
+                            if good_size == '4':
+                                photo=event.object.attachments[0].photo.sizes[4].url
+                            else: 
+                                print('не то4')
+                         
+                            if good_size == '5':
+                                photo=event.object.attachments[0].photo.sizes[5].url
+                            else: 
+                                print('не то5')
+                         
+                            if good_size == '6':
+                                photo=event.object.attachments[0].photo.sizes[6].url
+                            else: 
+                                print('не то6')
+                         
+                            if good_size == '7':
+                                photo=event.object.attachments[0].photo.sizes[7].url
+                            else: 
+                                print('не то7')
+                         
 
-                print(photo)
+                            print(photo)
 
-                r = requests.get(photo, allow_redirects=True)   #получение результа для закачки фото на комп
+                            r = requests.get(photo, allow_redirects=True)   #получение результа для закачки фото на комп
 
-                photka = 'post_{}.jpg'.format(post_id)      # закачка фотки на комп
+                            photka = 'post_{}.jpg'.format(post_id)      # закачка фотки на комп
 
-                open(photka, 'wb').write(r.content) 
+                            open(photka, 'wb').write(r.content) 
 
 
-                with open('post_{}.jpg'.format(post_id), 'rb') as photo:
-                    await bot1.send_photo(-1001604641351, photo, caption = post_text) # ЗАМЕСТО -1001604641351 ПОСТАВЬ ID СВОЕГО КАНАЛА И СДЕЛАЙ БОТА АДМИНОМ В КАНАЛЕ
-            except: 
-                await bot1.send_message(-1001604641351, post_text)        # ЗАМЕСТО -1001604641351 ПОСТАВЬ ID СВОЕГО КАНАЛА И СДЕЛАЙ БОТА АДМИНОМ В КАНАЛЕ
-    else:
-        print('Пост рекламный или какая то другая ошибка')
+                            with open('post_{}.jpg'.format(post_id), 'rb') as photo:
+                                await bot1.send_photo(-1001604641351, photo, caption = post_text) # ЗАМЕСТО -1001604641351 ПОСТАВЬ ID СВОЕГО КАНАЛА И СДЕЛАЙ БОТА АДМИНОМ В КАНАЛЕ
+                        except: 
+                            await bot1.send_message(-1001604641351, post_text)        # ЗАМЕСТО -1001604641351 ПОСТАВЬ ID СВОЕГО КАНАЛА И СДЕЛАЙ БОТА АДМИНОМ В КАНАЛЕ
+                    else:
+                        print('Пост рекламный или какая то другая ошибка')
 
 
 
