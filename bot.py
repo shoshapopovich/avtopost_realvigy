@@ -40,9 +40,9 @@ async def handle_message_event(event: GroupTypes.WallReplyNew):
 
     if post_istok == None:
         if post_donut == False:
-            if post_tip != 'suggest':
-                if post_tip != 'copy':
-                    if post_tip != 'reply':                
+            if post_tip != 'WallPostType.SUGGEST':
+                if post_tip != 'WallPostType.COPY':
+                    if post_tip != 'WallPostType.REPLY':                
                         try: 
                             try: 
                                 s1 = event.object. attachments[0].photo.sizes[1].height
