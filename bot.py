@@ -36,7 +36,7 @@ async def handle_message_event(event: GroupTypes.WallReplyNew):
     post_istok=event.object.copyright
     post_donut=event.object.donut.is_donut
     post_tip = event.object.post_type
-    print(post_istok, post_donut)
+    print(post_istok, post_donut, post_tip)
 
     if post_istok == None:
         if post_donut == False:
