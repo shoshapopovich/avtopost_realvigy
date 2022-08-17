@@ -31,7 +31,7 @@ tme = telebot.TeleBot(TOOKEN)
 for event in VkLongPoll(vk_session).listen():
     if event.type == VkEventType.WALL_POST_NEW:
         text = event.text.lower()
-        posttype = event.object.type
+        posttype = event.object.post_type
         print(posttype)
 
 
