@@ -11,6 +11,7 @@ from aiogram import Bot, Dispatcher, executor, types
 from aiogram.dispatcher.filters import Text
 from aiogram.types import ReplyKeyboardRemove, ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 from vkbottle import Callback, GroupEventType, GroupTypes, Keyboard, ShowSnackbarEvent, TemplateElement, template_gen, Text, KeyboardButtonColor
+from vk_api.longpoll import VkLongPoll, VkEventType
 from vkbottle.bot import Bot as Boot
 from vkbottle.bot import Message
 from vkbottle.modules import json #_____________________ ПОКА НЕ НУЖНО
@@ -19,6 +20,7 @@ bot = Boot(token="vk1.a.Eit-xI-wnoFpRdB0PyDeknTX7q97IDhAJxiYjhLm5kXSJp_Q4cgP6ut5
 vk_session = vk_api.VkApi(token='vk1.a.Eit-xI-wnoFpRdB0PyDeknTX7q97IDhAJxiYjhLm5kXSJp_Q4cgP6ut5kVmY5KPa0BBKUT3tDOzGI_BSlWbQkPw20quI5h5Re96Kycrl5cerVqVRDnxBHPfUMBulzQHS3YlgB69y4I-LStowV1qOVu1ZpDKTNGr4V_mbOh9wgRzGNqkR7ou01GHzCuil3pyI') 
 vk = vk_session.get_api() 
 
+
 TOOKEN = '5486302592:AAEaZGA6bJ2e5t4TyTtOBYBC_X9uL0tXe9U'
 
 bot1 = Bot(token=TOOKEN)
@@ -26,8 +28,14 @@ dp = Dispatcher(bot1)
 
 tme = telebot.TeleBot(TOOKEN)
 
+for event in VkLongPoll(vk_session).listen():
+    if event.type == VkEventType.WALL_POST_NEW:
+        text = event.text.lower()
+        type = event.object.type
+        print(type)
 
-@bot.on.raw_event(GroupEventType.WALL_POST_NEW, dataclass=GroupTypes.WallPostNew)
+
+@bot.on.raw_event(GroupEventType.MESSAGE_NEW, dataclass=GroupTypes.MessageNew)
 async def handle_message_event(event: GroupTypes.WallReplyNew):
     global bot1
 
