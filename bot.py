@@ -40,7 +40,7 @@ async def handle_message_event(event: GroupTypes.WallReplyNew):
     
     ifff = 0
     
-    if znachenie = post_tip:
+    if znachenie == post_tip:
         ifff = 1
         
     print(post_istok, post_donut, post_tip, znachenie, ifff)
