@@ -29,8 +29,8 @@ dp = Dispatcher(bot1)
 tme = telebot.TeleBot(TOOKEN)
 
 
-@bot.on.raw_event(GroupEventType.MESSAGE_NEW, dataclass=GroupTypes.MessageNew)
-async def handle_message_event(event: GroupTypes.WallReplyNew):
+@bot.on.raw_event(GroupEventType.WALL_POST_NEW, dataclass=GroupTypes.WallPostNew)
+async def handle_message_event(event: GroupTypes.WallPostNew):
     global bot1
 
     post_id=event.object.id
@@ -40,7 +40,7 @@ async def handle_message_event(event: GroupTypes.WallReplyNew):
    
     ifff = 0
     
-    if event.object.post_type == WallPostType.POST:
+    if event.object.post_type == "WallPostType.POST":
         ifff = 1
         
     print(post_istok, post_donut, ifff)
