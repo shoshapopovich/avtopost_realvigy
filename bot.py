@@ -28,12 +28,6 @@ dp = Dispatcher(bot1)
 
 tme = telebot.TeleBot(TOOKEN)
 
-for event in VkLongPoll(vk_session).listen():
-    if event.type == VkEventType.WALL_POST_NEW:
-        text = event.text.lower()
-        posttype = event.object.post_type
-        print(posttype)
-
 
 @bot.on.raw_event(GroupEventType.MESSAGE_NEW, dataclass=GroupTypes.MessageNew)
 async def handle_message_event(event: GroupTypes.WallReplyNew):
@@ -43,18 +37,16 @@ async def handle_message_event(event: GroupTypes.WallReplyNew):
     post_text=event.object.text
     post_istok=event.object.copyright
     post_donut=event.object.donut.is_donut
-    post_tip = event.object.post_type
-    znachenie = event
-    
+   
     ifff = 0
     
-    if znachenie == post_tip:
+    if event.object.post_type == WallPostType.POST:
         ifff = 1
         
-    print(post_istok, post_donut, post_tip, znachenie, ifff)
+    print(post_istok, post_donut, ifff)
     if post_istok == None:
         if post_donut == False:
-            if post_tip == 'WallPostType.POST': 
+            if event.object.post_type == WallPostType.POST: 
                 try: 
                     try: 
                         s1 = event.object. attachments[0].photo.sizes[1].height
